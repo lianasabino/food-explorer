@@ -4,12 +4,12 @@ module.exports = {
   development: {
     client: 'sqlite3',
     connection: {
-      filename: path.resolve(__dirname, 'src', 'database', 'sqlite3.db')
+      filename: path.resolve(__dirname, 'src', 'database', 'database.db')
     },
     pool: {
-      afterCreate: (conn, cb) => conn.run('foreingKeys = on', cb)
+      afterCreate: (conn, cb) => conn.run('PRAGMA foreign_keys = ON', cb)
     },
-    migration: {
+    migrations: {
       directory: path.resolve(
         __dirname,
         'src',
