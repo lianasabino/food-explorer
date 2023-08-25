@@ -42,3 +42,5 @@ class UserCreateService {
     return user
   }
 }
+
+module.exports = UserCreateService

@@ -1,8 +1,9 @@
 const knex = require('../../database/knex')
 
-class UseRepository {
+class UserRepository {
   async create({ name, email, password, is_admin }) {
-    await knex('users').insert({ name, email, password, is_admin })
+    const user = await knex('users').insert({ name, email, password, is_admin })
+    return user
   }
 
   async update(data) {
@@ -14,10 +15,10 @@ class UseRepository {
     return user
   }
 
-  async findById(email) {
+  async findByEmail(email) {
     const user = await knex('users').where({ email }).first()
     return user
   }
 }
 
-module.exports = UseRepository
+module.exports = UserRepository
